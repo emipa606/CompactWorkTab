@@ -1,0 +1,7 @@
+# Changelog for CompactWorkTab
+
+1.5.1 - Updated for 1.5
+Added translation support
+Removed the need for the Publicizer
+Used DeepL to update translations for ChineseSimplified, French, German
+
