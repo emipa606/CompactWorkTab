@@ -52,7 +52,7 @@ And as a bonus feature, [b]free gratis[/b], the mod enables scroll-wheel support
 
 All mod settings can be changed via RimWorld's mod options menu.
 
-Complete source code, published under the MIT license, is available on [url=https://github.com/CaptainArbitrary/CompactWorkTab]GitHub[/url].
+Complete source code, published under the MIT license, is available on [strike][url=https://github.com/CaptainArbitrary/CompactWorkTab]GitHub[/url].[/strike]
 
 [h1]Compatibility[/h1]
 This mod has been tested and found to be nicely compatible with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1414302321]Numbers[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1994006442]Priority Master[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2340773428]Grouped Pawns Lists[/url]. It's [i]technically[/i] also compatible with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=725219116]Fluffy's Work Tab[/url] (from which this mod took inspiration), but if you run them both at the same time Fluffy's mod will override the functionality of this one, so I recommend you don't do that.
@@ -60,7 +60,7 @@ This mod has been tested and found to be nicely compatible with [url=https://ste
 Mods that add new work types to the game are fully compatible with Compact Work Tab.
 
 [h1]Bug Reports and Other Feedback[/h1]
-Bug reports are welcome! Please share them on my [url=https://discord.gg/4SrvKaQTB3]Discord[/url]. Include as many specifics as possible. Screen shots are extremely helpful, as are steps to reproduce the bug you're reporting.
+Bug reports are welcome! [strike]Please share them on my [url=https://discord.gg/4SrvKaQTB3]Discord[/url].[/strike] Include as many specifics as possible. Screen shots are extremely helpful, as are steps to reproduce the bug you're reporting.
 
 [h1]Acknowledgments[/h1]
 Thanks to [url=https://steamcommunity.com/id/FluffyMods/myworkshopfiles/?appid=294100]Fluffy[/url] whose Work Tab mod inspired this one, and special thanks to [url=https://steamcommunity.com/profiles/76561198052696897/myworkshopfiles/?appid=294100]Krypt[/url] who taught me a workaround for an annoying text-rotation bug.
@@ -76,6 +76,8 @@ Portions of the materials used to create this mod are trademarks and/or copyrigh
 [*] Do not report errors by making a discussion-thread, I get no notification of that.
 [*] If you have the solution for a problem, please post it to the GitHub repository.
 [*] Use [url=https://github.com/RimSort/RimSort/releases/latest]RimSort[/url] to sort your mods
-[/list]</description>
-  <modVersion IgnoreIfNoMatchingField="True">1.5.1</modVersion>
+[/list]
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3250322299][img]https://img.shields.io/github/v/release/emipa606/CompactWorkTab?label=latest%20version&amp;style=plastic&amp;color=9f1111&amp;labelColor=black[/img][/url]</description>
+  <modVersion IgnoreIfNoMatchingField="True">1.5.2</modVersion>
 </ModMetaData>

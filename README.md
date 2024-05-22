@@ -1,4 +1,4 @@
-# [Compact Work Tab (Continued)]()
+# [Compact Work Tab (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=3250322299)
 
 ![Image](https://i.imgur.com/buuPQel.png)
 Update of CaptainArbitrarys mod https://steamcommunity.com/sharedfiles/filedetails/?id=3027381000
@@ -24,7 +24,7 @@ And as a bonus feature, **free gratis**, the mod enables scroll-wheel support fo
 
 All mod settings can be changed via RimWorld's mod options menu.
 
-Complete source code, published under the MIT license, is available on [https://github.com/CaptainArbitrary/CompactWorkTab](GitHub).
+Complete source code, published under the MIT license, is available on [strike][https://github.com/CaptainArbitrary/CompactWorkTab](GitHub).[/strike]
 
 # Compatibility
 
@@ -34,7 +34,7 @@ Mods that add new work types to the game are fully compatible with Compact Work 
 
 # Bug Reports and Other Feedback
 
-Bug reports are welcome! Please share them on my [https://discord.gg/4SrvKaQTB3](Discord). Include as many specifics as possible. Screen shots are extremely helpful, as are steps to reproduce the bug you're reporting.
+Bug reports are welcome! [strike]Please share them on my [https://discord.gg/4SrvKaQTB3](Discord).[/strike] Include as many specifics as possible. Screen shots are extremely helpful, as are steps to reproduce the bug you're reporting.
 
 # Acknowledgments
 
@@ -54,3 +54,5 @@ Portions of the materials used to create this mod are trademarks and/or copyrigh
 -  Use [https://github.com/RimSort/RimSort/releases/latest](RimSort) to sort your mods
 
 
+
+[https://steamcommunity.com/sharedfiles/filedetails/changelog/3250322299]![Image]((https://img.shields.io/github/v/release/emipa606/CompactWorkTab?label=latest%20version&style=plastic&color=9f1111&labelColor=black))

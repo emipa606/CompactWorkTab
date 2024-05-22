@@ -8,7 +8,7 @@ public class PawnColumnWorker_WorkPriority_GetMinHeaderHeight
 {
     public static void Postfix(ref int __result, PawnTable table)
     {
-        if (PawnColumnWorker_WorkPriority_DoHeader.PawnTableDefField.GetValue(table) != PawnTableDefOf.Work)
+        if (table.def != PawnTableDefOf.Work)
         {
             return;
         }

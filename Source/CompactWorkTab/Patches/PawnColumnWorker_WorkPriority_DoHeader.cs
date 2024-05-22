@@ -1,5 +1,4 @@
 using System.ComponentModel;
-using System.Reflection;
 using CompactWorkTab.Mods;
 using HarmonyLib;
 using RimWorld;
@@ -13,17 +12,9 @@ namespace CompactWorkTab.Patches;
 [HarmonyPatch(typeof(PawnColumnWorker_WorkPriority), nameof(PawnColumnWorker_WorkPriority.DoHeader))]
 public class PawnColumnWorker_WorkPriority_DoHeader
 {
-    public static readonly FieldInfo PawnTableDefField = AccessTools.Field("RimWorld.PawnTable:def");
-
-    private static readonly MethodInfo PawnColumnWorkerWorkPriorityHeaderClickedMethod =
-        AccessTools.Method("RimWorld.PawnColumnWorker_WorkPriority:HeaderClicked");
-
-    private static readonly MethodInfo PawnColumnWorkerWorkPriorityGetHeaderTipMethod =
-        AccessTools.Method("RimWorld.PawnColumnWorker_WorkPriority:GetHeaderTip");
-
     private static bool Prefix(PawnColumnWorker_WorkPriority __instance, Rect rect, PawnTable table)
     {
-        if (PawnTableDefField.GetValue(table) != PawnTableDefOf.Work)
+        if (table.def != PawnTableDefOf.Work)
         {
             return true;
         }
@@ -82,7 +73,7 @@ public class PawnColumnWorker_WorkPriority_DoHeader
 
         if (Widgets.ButtonInvisible(transformedRect))
         {
-            PawnColumnWorkerWorkPriorityHeaderClickedMethod.Invoke(__instance, [rect, table]);
+            __instance.HeaderClicked(rect, table);
         }
 
         if (mouseIsOver && ModSettings.HeaderOrientation == HeaderOrientation.Inclined)
@@ -104,7 +95,7 @@ public class PawnColumnWorker_WorkPriority_DoHeader
             return false;
         }
 
-        var headerTip = (string)PawnColumnWorkerWorkPriorityGetHeaderTipMethod.Invoke(__instance, [table]);
+        var headerTip = __instance.GetHeaderTip(table);
         TooltipHandler.TipRegion(new Rect(0f, 0f, UI.screenWidth, UI.screenHeight), headerTip);
 
         return false;

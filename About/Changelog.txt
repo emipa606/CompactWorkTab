@@ -1,5 +1,8 @@
 # Changelog for CompactWorkTab
 
+1.5.2 - Restored the use of the Publicizer for performance. Thank you Bradson for this information and explanation of its original use!
+
+
 1.5.1 - Updated for 1.5
 Added translation support
 Removed the need for the Publicizer

@@ -1,5 +1,3 @@
-using System.Reflection;
-using HarmonyLib;
 using UnityEngine;
 using Verse;
 
@@ -12,24 +10,19 @@ public static class LabelDrawer
 {
     public delegate (Rect transformedRect, Matrix4x4 transformationMatrix) LabelDrawerDelegate(Rect rect, string label);
 
-    private static readonly MethodInfo GetTopRectMethod = AccessTools.Method("UnityEngine.GUIClip:GetTopRect");
-
-    private static readonly MethodInfo UnclipMethod =
-        AccessTools.Method("UnityEngine.GUIClip:Unclip", [typeof(Vector2)]);
-
     public static (Rect transformedRect, Matrix4x4 transformationMatrix) DrawVerticalLabel(Rect rect, string label)
     {
         // Store the current transformation matrix of the GUI to restore it later.
         var originalMatrix = GUI.matrix;
 
         // Retrieve the topmost clipping rectangle in local GUI coordinates.
-        var topRect = (Rect)GetTopRectMethod.Invoke(null, null);
+        var topRect = GUIClip.GetTopRect();
 
         // Reset the GUI matrix to the identity matrix.
         GUI.matrix = Matrix4x4.identity;
 
         // Calculate the unclipped position of the current UI element in screen-space coordinates.
-        var unclippedPosition = (Vector2)UnclipMethod.Invoke(null, [Vector2.zero]);
+        var unclippedPosition = GUIClip.Unclip(Vector2.zero);
 
         // Restore the original matrix for subsequent operations.
         var transformationMatrix = originalMatrix;
@@ -128,7 +121,7 @@ public static class LabelDrawer
         GUI.matrix = Matrix4x4.identity;
 
         // Set the pivot point for rotation to the center of the rotated rectangle
-        var pivotPoint = (Vector2)UnclipMethod.Invoke(null, [rotatedRect.center]);
+        var pivotPoint = GUIClip.Unclip(rotatedRect.center);
 
         // Restore the original matrix for subsequent operations
         var transformationMatrix = originalMatrix;
