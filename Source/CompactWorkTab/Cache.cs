@@ -1,4 +1,5 @@
-﻿using CompactWorkTab.Mods;
+﻿using System.Collections.Generic;
+using CompactWorkTab.Mods;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -12,6 +13,19 @@ public static class Cache
     public static int DefPriority = Constants.DefPriority;
 
     public static int MinHeaderHeight;
+    private static readonly Dictionary<string, Vector2> verticalRotatedCache = [];
+
+    public static Vector2 GetVerticalRotated(string workType)
+    {
+        if (verticalRotatedCache.TryGetValue(workType, out var value))
+        {
+            return value;
+        }
+
+        var size = Text.CalcSize(workType) * 1.1f;
+        verticalRotatedCache[workType] = size;
+        return size;
+    }
 
     public static void Recache(PawnTable table)
     {

@@ -6,4 +6,9 @@
   <CWT.Inclined>倾斜封头</CWT.Inclined>
   <CWT.Vertical>垂直标题</CWT.Vertical>
   <CWT.Horizontal>横向页眉</CWT.Horizontal>
+  <CWT.InclinedTT>略微旋转标题，以减少占用空间，同时保持可读性</CWT.InclinedTT>
+  <CWT.VerticalTT>将标头旋转 90 度，尽可能不占用空间</CWT.VerticalTT>
+  <CWT.VerticalRotated>垂直旋转</CWT.VerticalRotated>
+  <CWT.VerticalRotatedTT>将页眉旋转 90 度，尽量不占用空间，同时每个字母保持原来的旋转角度。这种方法最适用于固定大小的字母，如中文。</CWT.VerticalRotatedTT>
+  <CWT.HorizontalTT>标题不会被修改。</CWT.HorizontalTT>
 </LanguageData>

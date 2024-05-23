@@ -8,6 +8,10 @@ public static class Textures
 {
     public static readonly Texture2D InclinedTexture = ContentFinder<Texture2D>.Get("CompactWorkTab_Inclined");
     public static readonly Texture2D VerticalTexture = ContentFinder<Texture2D>.Get("CompactWorkTab_Vertical");
+
+    public static readonly Texture2D VerticalRotatedTexture =
+        ContentFinder<Texture2D>.Get("CompactWorkTab_VerticalRotated");
+
     public static readonly Texture2D HorizontalTexture = ContentFinder<Texture2D>.Get("CompactWorkTab_Horizontal");
 
     public static readonly Texture2D SortingIcon = ContentFinder<Texture2D>.Get("UI/Icons/Sorting");

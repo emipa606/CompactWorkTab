@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using CompactWorkTab.Mods;
 using HarmonyLib;
@@ -33,6 +34,7 @@ public class PawnColumnWorker_WorkPriority_DoHeader
                         tex.height);
                     break;
                 case HeaderOrientation.Vertical:
+                case HeaderOrientation.VerticalRotated:
                     sortingTexRect = new Rect(rect.xMax - tex.width - 1f, rect.yMax - tex.height - 1f, tex.width,
                         tex.height);
                     break;
@@ -46,15 +48,36 @@ public class PawnColumnWorker_WorkPriority_DoHeader
             GUI.DrawTexture(sortingTexRect, tex);
         }
 
-        LabelDrawer.LabelDrawerDelegate drawLabelDelegate;
+        var label = __instance.def.workType.labelShort.CapitalizeFirst();
 
+        var originalMatrix = GUI.matrix;
+        Rect transformedRect;
+        Matrix4x4 transformationMatrix;
         switch (ModSettings.HeaderOrientation)
         {
             case HeaderOrientation.Inclined:
-                drawLabelDelegate = LabelDrawer.DrawInclinedLabel;
+                (transformedRect, transformationMatrix) = LabelDrawer.DrawInclinedLabel(rect, label);
                 break;
             case HeaderOrientation.Vertical:
-                drawLabelDelegate = LabelDrawer.DrawVerticalLabel;
+                (transformedRect, transformationMatrix) = LabelDrawer.DrawVerticalLabel(rect, label);
+                break;
+            case HeaderOrientation.VerticalRotated:
+                var originalAnchor = Text.Anchor;
+                var originalFont = Text.Font;
+                var verticalLabel = label.Length > 4
+                    ? $"{string.Join("\n", label.Substring(0, Math.Min(4, label.Length)).ToCharArray())}."
+                    : string.Join("\n", label.ToCharArray());
+
+                Text.Font = GameFont.Small;
+                Text.Anchor = TextAnchor.MiddleCenter;
+                var verticalLabelSize = Cache.GetVerticalRotated(verticalLabel);
+
+                transformedRect = new Rect(rect.center.x - (verticalLabelSize.x / 2f),
+                    rect.y + rect.height - verticalLabelSize.y, verticalLabelSize.x, verticalLabelSize.y);
+                Widgets.Label(transformedRect, verticalLabel);
+                Text.Anchor = originalAnchor;
+                Text.Font = originalFont;
+                transformationMatrix = originalMatrix;
                 break;
             case HeaderOrientation.Horizontal:
                 return true;
@@ -63,10 +86,6 @@ public class PawnColumnWorker_WorkPriority_DoHeader
                     (int)ModSettings.HeaderOrientation, typeof(HeaderOrientation));
         }
 
-        var label = __instance.def.workType.labelShort.CapitalizeFirst();
-        var (transformedRect, transformationMatrix) = drawLabelDelegate(rect, label);
-
-        var originalMatrix = GUI.matrix;
         GUI.matrix = transformationMatrix;
 
         var mouseIsOver = transformedRect.Contains(Event.current.mousePosition);
@@ -83,7 +102,8 @@ public class PawnColumnWorker_WorkPriority_DoHeader
 
         GUI.matrix = originalMatrix;
 
-        if (mouseIsOver && ModSettings.HeaderOrientation == HeaderOrientation.Vertical)
+        if (mouseIsOver &&
+            ModSettings.HeaderOrientation is HeaderOrientation.Vertical or HeaderOrientation.VerticalRotated)
         {
             Widgets.DrawHighlight(rect);
         }
@@ -95,8 +115,7 @@ public class PawnColumnWorker_WorkPriority_DoHeader
             return false;
         }
 
-        var headerTip = __instance.GetHeaderTip(table);
-        TooltipHandler.TipRegion(new Rect(0f, 0f, UI.screenWidth, UI.screenHeight), headerTip);
+        TooltipHandler.TipRegion(new Rect(0f, 0f, UI.screenWidth, UI.screenHeight), __instance.GetHeaderTip(table));
 
         return false;
     }

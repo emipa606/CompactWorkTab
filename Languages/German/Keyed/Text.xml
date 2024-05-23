@@ -6,4 +6,9 @@
   <CWT.Inclined>Schräge Header</CWT.Inclined>
   <CWT.Vertical>Vertikale Überschriften</CWT.Vertical>
   <CWT.Horizontal>Horizontale Überschriften</CWT.Horizontal>
+  <CWT.InclinedTT>Dreht die Kopfzeilen leicht, damit sie weniger Platz einnehmen und trotzdem lesbar bleiben</CWT.InclinedTT>
+  <CWT.VerticalTT>Dreht die Kopfzeilen um 90 Grad und nimmt so wenig Platz wie möglich ein.</CWT.VerticalTT>
+  <CWT.VerticalRotated>Vertikal gedreht</CWT.VerticalRotated>
+  <CWT.VerticalRotatedTT>Dreht die Kopfzeilen um 90 Grad, um so wenig Platz wie möglich zu beanspruchen, wobei jeder Buchstabe seine ursprüngliche Drehung beibehält. Dies funktioniert am besten mit Buchstaben aus Alphabeten mit fester Größe wie Chinesisch.</CWT.VerticalRotatedTT>
+  <CWT.HorizontalTT>Die Kopfzeilen werden nicht geändert.</CWT.HorizontalTT>
 </LanguageData>

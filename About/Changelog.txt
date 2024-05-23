@@ -1,5 +1,9 @@
 # Changelog for CompactWorkTab
 
+1.5.3 - Added vertical rotated option
+Used DeepL to update translations for ChineseSimplified, French, German
+
+
 1.5.2 - Restored the use of the Publicizer for performance. Thank you Bradson for this information and explanation of its original use!
 
 

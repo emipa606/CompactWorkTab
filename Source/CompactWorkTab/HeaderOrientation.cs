@@ -4,5 +4,6 @@ public enum HeaderOrientation
 {
     Inclined,
     Vertical,
-    Horizontal
+    Horizontal,
+    VerticalRotated
 }

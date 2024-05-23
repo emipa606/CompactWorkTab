@@ -3,6 +3,11 @@
   <CWT.modVersion>Installed mod-version: {0}</CWT.modVersion>
   <CWT.useScrollWheel>Use scroll wheel to change work priorities:</CWT.useScrollWheel>
   <CWT.Inclined>Inclined Headers</CWT.Inclined>
+  <CWT.InclinedTT>Rotates the headers slightly to make take up less space while keeping readability</CWT.InclinedTT>
   <CWT.Vertical>Vertical Headers</CWT.Vertical>
+  <CWT.VerticalTT>Rotates the headers 90 degrees do take up as little space as possible</CWT.VerticalTT>
+  <CWT.VerticalRotated>Vertical Rotated</CWT.VerticalRotated>
+  <CWT.VerticalRotatedTT>Rotates the headers 90 degrees do take up as little space as possible while each letter keeps their original rotation. This works best with letters from fixed-size alphabets like Chinese.</CWT.VerticalRotatedTT>
   <CWT.Horizontal>Horizontal Headers</CWT.Horizontal>
+  <CWT.HorizontalTT>Headers will not be modified.</CWT.HorizontalTT>
 </LanguageData>

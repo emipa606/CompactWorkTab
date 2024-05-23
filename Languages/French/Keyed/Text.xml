@@ -6,4 +6,9 @@
   <CWT.Inclined>Têtes inclinées</CWT.Inclined>
   <CWT.Vertical>En-têtes verticaux</CWT.Vertical>
   <CWT.Horizontal>En-têtes horizontaux</CWT.Horizontal>
+  <CWT.InclinedTT>Fait pivoter légèrement les en-têtes pour qu'ils prennent moins de place tout en restant lisibles.</CWT.InclinedTT>
+  <CWT.VerticalTT>Fait pivoter les collecteurs de 90 degrés pour occuper le moins d'espace possible.</CWT.VerticalTT>
+  <CWT.VerticalRotated>Vertical Rotation</CWT.VerticalRotated>
+  <CWT.VerticalRotatedTT>Fait pivoter les en-têtes de 90 degrés pour occuper le moins d'espace possible, chaque lettre conservant sa rotation d'origine. Cette méthode fonctionne le mieux avec les lettres provenant d'alphabets de taille fixe, comme le chinois.</CWT.VerticalRotatedTT>
+  <CWT.HorizontalTT>Les en-têtes ne seront pas modifiés.</CWT.HorizontalTT>
 </LanguageData>

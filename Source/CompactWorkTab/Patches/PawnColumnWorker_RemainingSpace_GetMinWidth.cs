@@ -9,17 +9,12 @@ public class PawnColumnWorker_RemainingSpace_GetMinWidth
 {
     private static bool Prefix(ref int __result)
     {
-        switch (ModSettings.HeaderOrientation)
+        if (ModSettings.HeaderOrientation != HeaderOrientation.Inclined)
         {
-            case HeaderOrientation.Horizontal:
-                return true;
-            case HeaderOrientation.Vertical:
-                return true;
-            case HeaderOrientation.Inclined:
-                __result = Mathf.CeilToInt(Cache.MinHeaderHeight * Mathf.Sqrt(3f) / 2f) / 2;
-                return false;
-            default:
-                return true;
+            return true;
         }
+
+        __result = Mathf.CeilToInt(Cache.MinHeaderHeight * Mathf.Sqrt(3f) / 2f) / 2;
+        return false;
     }
 }

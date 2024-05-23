@@ -18,9 +18,11 @@ public class ModSettings : Verse.ModSettings
 
     public void DoSettingsWindowContents(Rect inRect)
     {
-        var leftColumn = new Rect(inRect) { width = inRect.width / 3f };
-        var middleColumn = new Rect(inRect) { width = inRect.width / 3f, x = leftColumn.xMax };
-        var rightColumn = new Rect(inRect) { width = inRect.width / 3f, x = middleColumn.xMax };
+        var fourth = inRect.width / 4f;
+        var leftColumn = new Rect(inRect) { width = fourth };
+        var middleLeftColumn = new Rect(inRect) { width = fourth, x = leftColumn.xMax };
+        var middleRightColumn = new Rect(inRect) { width = fourth, x = middleLeftColumn.xMax };
+        var rightColumn = new Rect(inRect) { width = fourth, x = middleRightColumn.xMax };
 
         var firstRow = new Rect(inRect) { height = GenUI.ListSpacing };
         Widgets.CheckboxLabeled(firstRow, "CWT.useScrollWheel".Translate(), ref UseScrollWheel);
@@ -34,12 +36,20 @@ public class ModSettings : Verse.ModSettings
         }
 
         var thirdRow = new Rect(inRect) { y = secondRow.yMax, height = GenUI.ListSpacing };
-        DoRadioButtonAndTexture(leftColumn, thirdRow, "CWT.Inclined".Translate(), Textures.InclinedTexture,
+        DoRadioButtonAndTexture(leftColumn, thirdRow, "CWT.Inclined".Translate(),
+            Textures.InclinedTexture,
             HeaderOrientation.Inclined);
-        DoRadioButtonAndTexture(middleColumn, thirdRow, "CWT.Vertical".Translate(), Textures.VerticalTexture,
+        TooltipHandler.TipRegion(leftColumn.TopHalf(), "CWT.InclinedTT".Translate());
+        DoRadioButtonAndTexture(middleLeftColumn, thirdRow, "CWT.Vertical".Translate(), Textures.VerticalTexture,
             HeaderOrientation.Vertical);
+        TooltipHandler.TipRegion(middleLeftColumn.TopHalf(), "CWT.VerticalTT".Translate());
+        DoRadioButtonAndTexture(middleRightColumn, thirdRow, "CWT.VerticalRotated".Translate(),
+            Textures.VerticalRotatedTexture,
+            HeaderOrientation.VerticalRotated);
+        TooltipHandler.TipRegion(middleRightColumn.TopHalf(), "CWT.VerticalRotatedTT".Translate());
         DoRadioButtonAndTexture(rightColumn, thirdRow, "CWT.Horizontal".Translate(), Textures.HorizontalTexture,
             HeaderOrientation.Horizontal);
+        TooltipHandler.TipRegion(rightColumn.TopHalf(), "CWT.HorizontalTT".Translate());
     }
 
     private static void DoRadioButtonAndTexture(Rect column, Rect row, string label, Texture texture,

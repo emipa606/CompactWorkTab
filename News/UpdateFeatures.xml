@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<HugsLib.UpdateFeatureDef Abstract="true" Name="CompactWorkTab_UpdateFeatureBase">
+		<modNameReadable>CompactWorkTab</modNameReadable>
+		<linkUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3250322299</linkUrl>
+	</HugsLib.UpdateFeatureDef>
+	<HugsLib.UpdateFeatureDef ParentName="CompactWorkTab_UpdateFeatureBase">
+		<defName>CompactWorkTab_1_5_2</defName>
+		<assemblyVersion>1.5.2</assemblyVersion>
+		<content>By request there is now another vertical option that keeps the letters horizontal. This option is mainly for fixed width characters, like chinese. Idea by 摄魂狼</content>
+	</HugsLib.UpdateFeatureDef>
+</Defs>
+
