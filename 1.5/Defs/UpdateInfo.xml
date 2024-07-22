@@ -1,13 +1,12 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<TabulaRasa.UpdateDef Abstract="true" Name="CompactWorkTab_UpdateInfoBase">
-		<linkUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3250322299</linkUrl>
-		<banner>UpdateInfo/CompactWorkTab</banner>
-	</TabulaRasa.UpdateDef>
-	<TabulaRasa.UpdateDef ParentName="CompactWorkTab_UpdateInfoBase">
-		<defName>CompactWorkTab_1_5_2</defName>
-		<date>2024/5/23</date>
-		<content>By request there is now another vertical option that keeps the letters horizontal. This option is mainly for fixed width characters, like chinese. Idea by 摄魂狼</content>
-	</TabulaRasa.UpdateDef>
+  <TabulaRasa.UpdateDef Abstract="true" Name="CompactWorkTab_UpdateInfoBase">
+    <linkUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3250322299</linkUrl>
+    <banner>UpdateInfo/CompactWorkTab</banner>
+  </TabulaRasa.UpdateDef>
+  <TabulaRasa.UpdateDef ParentName="CompactWorkTab_UpdateInfoBase">
+    <defName>CompactWorkTab_1_5_2</defName>
+    <date>2024/5/23</date>
+    <content>By request there is now another vertical option that keeps the letters horizontal. This option is mainly for fixed width characters, like chinese. Idea by 摄魂狼</content>
+  </TabulaRasa.UpdateDef>
 </Defs>
-

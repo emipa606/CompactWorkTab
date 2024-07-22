@@ -23,6 +23,7 @@
 Update of CaptainArbitrarys mod https://steamcommunity.com/sharedfiles/filedetails/?id=3027381000
 
 - Added translation-support
+- By request there is now another vertical option that keeps the letters horizontal. This option is mainly for fixed width characters, like chinese. Idea by 摄魂狼
 
 [img]https://i.imgur.com/pufA0kM.png[/img]
 
@@ -79,5 +80,5 @@ Portions of the materials used to create this mod are trademarks and/or copyrigh
 [/list]
 
 [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3250322299][img]https://img.shields.io/github/v/release/emipa606/CompactWorkTab?label=latest%20version&amp;style=plastic&amp;color=9f1111&amp;labelColor=black[/img][/url]</description>
-  <modVersion IgnoreIfNoMatchingField="True">1.5.3</modVersion>
+  <modVersion IgnoreIfNoMatchingField="True">1.5.4</modVersion>
 </ModMetaData>

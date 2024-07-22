@@ -1,5 +1,8 @@
 # Changelog for CompactWorkTab
 
+1.5.4 - Fixed the gap when using horizontal option
+
+
 1.5.3 - Added vertical rotated option
 Used DeepL to update translations for ChineseSimplified, French, German
 
