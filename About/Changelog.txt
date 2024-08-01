@@ -1,5 +1,8 @@
 # Changelog for CompactWorkTab
 
+1.5.5 - Fixed compatiblity with PriorityMaster as they changed their packageid for some reason
+
+
 1.5.4 - Fixed the gap when using horizontal option
 
 

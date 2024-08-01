@@ -1,14 +1,15 @@
-﻿using Verse;
+﻿using System.Collections.Generic;
+using Verse;
 
 namespace CompactWorkTab.Mods;
 
 internal static class PriorityMaster
 {
-    private const string PackageId = "lauriichen.PriorityMod";
     private const string ModTypeName = "PriorityMod.Core.PriorityMaster";
     private const string SettingsFieldName = "settings";
     private const string GetMaxPriorityMethodName = "GetMaxPriority";
     private const string GetDefPriorityMethodName = "GetDefPriority";
+    private static readonly List<string> PackageIds = ["Lauriichen.PriorityMod", "Lauriichan.PriorityMaster"];
 
     private static object _modSettings;
 
@@ -16,7 +17,7 @@ internal static class PriorityMaster
     {
         get
         {
-            if (_modSettings != null || !ModsConfig.IsActive(PackageId))
+            if (_modSettings != null || !PackageIds.Any(ModsConfig.IsActive))
             {
                 return _modSettings;
             }
