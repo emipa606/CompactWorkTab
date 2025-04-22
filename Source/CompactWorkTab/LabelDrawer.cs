@@ -92,24 +92,24 @@ public static class LabelDrawer
         // Create a rectangle for the rotated label centered on the original rectangle
         var rotatedRect = new Rect(0f, 0f, rect.height, labelSize.y) { center = rect.center };
 
-        // Let's label the corners of rotatedRect. The top left corner is A. The top right corner is b.
-        // The bottom left corner is c. The bottom right corner is d. Our goal is to make C. match the target
+        // Let's label the corners of rotatedRect. The top left corner is A. The top right corner is B.
+        // The bottom left corner is C. The bottom right corner is D. Our goal is to make C. match the target
         // position after the 60-degree rotation, where the target position is (rect.center.x, rect.yMax).
 
         var center = rotatedRect.center;
         var theta = Mathf.Deg2Rad * 60; // Convert 60 degrees to radians
 
-        // Coordinates of point c relative to the center of the rotatedRect
+        // Coordinates of point C relative to the center of the rotatedRect
         var cRelative = new Vector2(-rotatedRect.width / 2, -rotatedRect.height / 2);
 
-        // Calculate where point c would land after a 60-degree rotation
+        // Calculate where point C would land after a 60-degree rotation
         var cPrime = new Vector2(
             (Mathf.Cos(theta) * cRelative.x) - (Mathf.Sin(theta) * cRelative.y) + center.x,
             (Mathf.Sin(theta) * cRelative.x) + (Mathf.Cos(theta) * cRelative.y) + center.y
         );
 
-        // Calculate the required horizontal offset to make c. match the target position
-        var xOffset = rect.xMax - cPrime.x;
+        // Calculate the required horizontal offset to make point C match the target position
+        var xOffset = rect.center.x - cPrime.x;
 
         // Apply the offset to the rotatedRect
         rotatedRect.x += xOffset;
