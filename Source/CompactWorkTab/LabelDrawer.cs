@@ -1,3 +1,5 @@
+using System;
+using System.ComponentModel;
 using UnityEngine;
 using Verse;
 
@@ -9,6 +11,45 @@ namespace CompactWorkTab;
 public static class LabelDrawer
 {
     public delegate (Rect transformedRect, Matrix4x4 transformationMatrix) LabelDrawerDelegate(Rect rect, string label);
+
+    public static (Rect transformedRect, Matrix4x4 transformationMatrix) DrawLabel(Rect rect, string label)
+    {
+        var originalMatrix = GUI.matrix;
+        var transformedRect = rect;;
+        var transformationMatrix = originalMatrix;
+        switch (ModSettings.HeaderOrientation)
+        {
+            case HeaderOrientation.Inclined:
+                (transformedRect, transformationMatrix) = DrawInclinedLabel(rect, label);
+                break;
+            case HeaderOrientation.Vertical:
+                (transformedRect, transformationMatrix) = DrawVerticalLabel(rect, label);
+                break;
+            case HeaderOrientation.VerticalRotated:
+                var originalAnchor = Text.Anchor;
+                var originalFont = Text.Font;
+                var verticalLabel = label.Length > 4
+                    ? $"{string.Join("\n", label.Substring(0, Math.Min(4, label.Length)).ToCharArray())}."
+                    : string.Join("\n", label.ToCharArray());
+
+                Text.Font = GameFont.Small;
+                Text.Anchor = TextAnchor.MiddleCenter;
+                var verticalLabelSize = Cache.GetVerticalRotated(verticalLabel);
+
+                transformedRect = new Rect(rect.center.x - (verticalLabelSize.x / 2f),
+                    rect.y + rect.height - verticalLabelSize.y, verticalLabelSize.x, verticalLabelSize.y);
+                Widgets.Label(transformedRect, verticalLabel);
+                Text.Anchor = originalAnchor;
+                Text.Font = originalFont;
+                break;
+            case HeaderOrientation.Horizontal:
+                break;
+            default:
+                throw new InvalidEnumArgumentException(nameof(ModSettings.HeaderOrientation),
+                    (int)ModSettings.HeaderOrientation, typeof(HeaderOrientation));
+        }
+        return (transformedRect, transformationMatrix);
+    }
 
     public static (Rect transformedRect, Matrix4x4 transformationMatrix) DrawVerticalLabel(Rect rect, string label)
     {

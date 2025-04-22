@@ -15,7 +15,7 @@ public class PawnColumnWorker_WorkPriority_DoHeader
 {
     private static bool Prefix(PawnColumnWorker_WorkPriority __instance, Rect rect, PawnTable table)
     {
-        if (table.def != PawnTableDefOf.Work)
+        if (table.def != PawnTableDefOf.Work || ModSettings.HeaderOrientation == HeaderOrientation.Horizontal)
         {
             return true;
         }
@@ -51,40 +51,7 @@ public class PawnColumnWorker_WorkPriority_DoHeader
         var label = __instance.def.workType.labelShort.CapitalizeFirst();
 
         var originalMatrix = GUI.matrix;
-        Rect transformedRect;
-        Matrix4x4 transformationMatrix;
-        switch (ModSettings.HeaderOrientation)
-        {
-            case HeaderOrientation.Inclined:
-                (transformedRect, transformationMatrix) = LabelDrawer.DrawInclinedLabel(rect, label);
-                break;
-            case HeaderOrientation.Vertical:
-                (transformedRect, transformationMatrix) = LabelDrawer.DrawVerticalLabel(rect, label);
-                break;
-            case HeaderOrientation.VerticalRotated:
-                var originalAnchor = Text.Anchor;
-                var originalFont = Text.Font;
-                var verticalLabel = label.Length > 4
-                    ? $"{string.Join("\n", label.Substring(0, Math.Min(4, label.Length)).ToCharArray())}."
-                    : string.Join("\n", label.ToCharArray());
-
-                Text.Font = GameFont.Small;
-                Text.Anchor = TextAnchor.MiddleCenter;
-                var verticalLabelSize = Cache.GetVerticalRotated(verticalLabel);
-
-                transformedRect = new Rect(rect.center.x - (verticalLabelSize.x / 2f),
-                    rect.y + rect.height - verticalLabelSize.y, verticalLabelSize.x, verticalLabelSize.y);
-                Widgets.Label(transformedRect, verticalLabel);
-                Text.Anchor = originalAnchor;
-                Text.Font = originalFont;
-                transformationMatrix = originalMatrix;
-                break;
-            case HeaderOrientation.Horizontal:
-                return true;
-            default:
-                throw new InvalidEnumArgumentException(nameof(ModSettings.HeaderOrientation),
-                    (int)ModSettings.HeaderOrientation, typeof(HeaderOrientation));
-        }
+        var (transformedRect, transformationMatrix) = LabelDrawer.DrawLabel(rect, label);
 
         GUI.matrix = transformationMatrix;
 
