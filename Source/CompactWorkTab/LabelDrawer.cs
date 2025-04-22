@@ -48,6 +48,23 @@ public static class LabelDrawer
                 throw new InvalidEnumArgumentException(nameof(ModSettings.HeaderOrientation),
                     (int)ModSettings.HeaderOrientation, typeof(HeaderOrientation));
         }
+        GUI.matrix = transformationMatrix;
+
+        var mouseIsOver = transformedRect.Contains(Event.current.mousePosition);
+        
+        if (mouseIsOver && ModSettings.HeaderOrientation == HeaderOrientation.Inclined)
+        {
+            Widgets.DrawHighlight(transformedRect);
+        }
+
+        GUI.matrix = originalMatrix;
+        
+        if (mouseIsOver &&
+            ModSettings.HeaderOrientation is HeaderOrientation.Vertical or HeaderOrientation.VerticalRotated)
+        {
+            Widgets.DrawHighlight(rect);
+        }
+        
         return (transformedRect, transformationMatrix);
     }
 

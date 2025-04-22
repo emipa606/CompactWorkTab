@@ -61,20 +61,9 @@ public class PawnColumnWorker_WorkPriority_DoHeader
         {
             __instance.HeaderClicked(rect, table);
         }
-
-        if (mouseIsOver && ModSettings.HeaderOrientation == HeaderOrientation.Inclined)
-        {
-            Widgets.DrawHighlight(transformedRect);
-        }
-
+        
         GUI.matrix = originalMatrix;
-
-        if (mouseIsOver &&
-            ModSettings.HeaderOrientation is HeaderOrientation.Vertical or HeaderOrientation.VerticalRotated)
-        {
-            Widgets.DrawHighlight(rect);
-        }
-
+        
         MouseoverSounds.DoRegion(rect);
 
         if (!mouseIsOver)
