@@ -51,7 +51,29 @@ public class PawnColumnWorker_WorkPriority_DoHeader
         var label = __instance.def.workType.labelShort.CapitalizeFirst();
 
         var originalMatrix = GUI.matrix;
+        
+        // Backup the current GUI properties
+        var originalColor = GUI.color;
+        var originalAnchor = Text.Anchor;
+        var originalFont = Text.Font;
+        var originalWordWrap = Text.WordWrap;
+
+        // Set GUI properties for the rotated label drawing
+        GUI.color = new Color(.8f, .8f, .8f);
+        Text.Anchor = TextAnchor.MiddleLeft;
+        Text.Font = GameFont.Small;
+        if (ModSettings.HeaderOrientation == HeaderOrientation.Inclined)
+        {
+            Text.WordWrap = false;
+        }
+        
         var (transformedRect, transformationMatrix) = LabelDrawer.DrawLabel(rect, label);
+        
+        // Restore the original GUI properties
+        Text.WordWrap = originalWordWrap;
+        Text.Font = originalFont;
+        GUI.color = originalColor;
+        Text.Anchor = originalAnchor;
 
         GUI.matrix = transformationMatrix;
 

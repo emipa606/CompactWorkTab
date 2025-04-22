@@ -26,21 +26,14 @@ public static class LabelDrawer
                 (transformedRect, transformationMatrix) = DrawVerticalLabel(rect, label);
                 break;
             case HeaderOrientation.VerticalRotated:
-                var originalAnchor = Text.Anchor;
-                var originalFont = Text.Font;
                 var verticalLabel = label.Length > 4
                     ? $"{string.Join("\n", label.Substring(0, Math.Min(4, label.Length)).ToCharArray())}."
                     : string.Join("\n", label.ToCharArray());
-
-                Text.Font = GameFont.Small;
-                Text.Anchor = TextAnchor.MiddleCenter;
+                
                 var verticalLabelSize = Cache.GetVerticalRotated(verticalLabel);
-
                 transformedRect = new Rect(rect.center.x - (verticalLabelSize.x / 2f),
                     rect.y + rect.height - verticalLabelSize.y, verticalLabelSize.x, verticalLabelSize.y);
                 Widgets.Label(transformedRect, verticalLabel);
-                Text.Anchor = originalAnchor;
-                Text.Font = originalFont;
                 break;
             case HeaderOrientation.Horizontal:
                 break;
@@ -115,23 +108,8 @@ public static class LabelDrawer
         // Define the rectangle for the label.
         var labelRect = new Rect(-bottomClip + GenUI.GapTiny, leftClip, rect.height, rect.width + GenUI.GapTiny);
 
-        // Backup the current GUI properties.
-        var originalColor = GUI.color;
-        var originalAnchor = Text.Anchor;
-        var originalFont = Text.Font;
-
-        // Set the properties for the label.
-        GUI.color = new Color(.8f, .8f, .8f);
-        Text.Anchor = TextAnchor.MiddleLeft;
-        Text.Font = GameFont.Small;
-
         // Draw the label.
         Widgets.Label(labelRect, label);
-
-        // Restore the original GUI properties.
-        Text.Font = originalFont;
-        GUI.color = originalColor;
-        Text.Anchor = originalAnchor;
 
         // End the custom GUI clipping.
         GUI.EndClip();
@@ -196,18 +174,6 @@ public static class LabelDrawer
         // Apply the transformation
         GUI.matrix = transformationMatrix;
 
-        // Backup the current GUI properties
-        var originalColor = GUI.color;
-        var originalAnchor = Text.Anchor;
-        var originalFont = Text.Font;
-        var originalWordWrap = Text.WordWrap;
-
-        // Set GUI properties for the rotated label drawing
-        GUI.color = new Color(.8f, .8f, .8f);
-        Text.Anchor = TextAnchor.MiddleLeft;
-        Text.Font = GameFont.Small;
-        Text.WordWrap = false;
-
         // Draw the label in the rotated space
         Widgets.Label(rotatedRect, label);
 
@@ -215,12 +181,6 @@ public static class LabelDrawer
         var bottomRight = new Vector2(rotatedRect.xMax, rotatedRect.yMax);
         var bottomLeft = new Vector2(rotatedRect.xMin, rotatedRect.yMax);
         Widgets.DrawLine(bottomRight, bottomLeft, new Color(1f, 1f, 1f, 0.2f), 1f);
-
-        // Restore the original GUI properties
-        Text.WordWrap = originalWordWrap;
-        Text.Font = originalFont;
-        GUI.color = originalColor;
-        Text.Anchor = originalAnchor;
 
         // Reset the GUI matrix to its original state
         GUI.matrix = originalMatrix;
