@@ -35,25 +35,32 @@ public class ModSettings : Verse.ModSettings
             GUI.contentColor = Color.white;
         }
 
+        DrawHeaderChangeStyle(inRect, secondRow, leftColumn, middleLeftColumn, middleRightColumn, rightColumn);
+    }
+
+    private static void DrawHeaderChangeStyle(Rect inRect, Rect secondRow, Rect leftColumn, Rect middleLeftColumn,
+                                              Rect middleRightColumn, Rect rightColumn)
+    {
         var thirdRow = new Rect(inRect) { y = secondRow.yMax, height = GenUI.ListSpacing };
         DoRadioButtonAndTexture(leftColumn, thirdRow, "CWT.Inclined".Translate(),
             Textures.InclinedTexture,
-            HeaderOrientation.Inclined);
-        TooltipHandler.TipRegion(leftColumn.TopHalf(), "CWT.InclinedTT".Translate());
-        DoRadioButtonAndTexture(middleLeftColumn, thirdRow, "CWT.Vertical".Translate(), Textures.VerticalTexture,
-            HeaderOrientation.Vertical);
-        TooltipHandler.TipRegion(middleLeftColumn.TopHalf(), "CWT.VerticalTT".Translate());
+            HeaderOrientation.Inclined, "CWT.InclinedTT".Translate());
+
+        DoRadioButtonAndTexture(middleLeftColumn, thirdRow, "CWT.Vertical".Translate(), 
+            Textures.VerticalTexture,
+            HeaderOrientation.Vertical, "CWT.VerticalTT".Translate());
+
         DoRadioButtonAndTexture(middleRightColumn, thirdRow, "CWT.VerticalRotated".Translate(),
             Textures.VerticalRotatedTexture,
-            HeaderOrientation.VerticalRotated);
-        TooltipHandler.TipRegion(middleRightColumn.TopHalf(), "CWT.VerticalRotatedTT".Translate());
-        DoRadioButtonAndTexture(rightColumn, thirdRow, "CWT.Horizontal".Translate(), Textures.HorizontalTexture,
-            HeaderOrientation.Horizontal);
-        TooltipHandler.TipRegion(rightColumn.TopHalf(), "CWT.HorizontalTT".Translate());
+            HeaderOrientation.VerticalRotated, "CWT.VerticalRotatedTT".Translate());
+
+        DoRadioButtonAndTexture(rightColumn, thirdRow, "CWT.Horizontal".Translate(), 
+            Textures.HorizontalTexture,
+            HeaderOrientation.Horizontal, "CWT.HorizontalTT".Translate());
     }
 
     private static void DoRadioButtonAndTexture(Rect column, Rect row, string label, Texture texture,
-        HeaderOrientation orientation)
+                                                HeaderOrientation orientation,  TaggedString tips)
     {
         // Radio Button
         var labelSize = Text.CalcSize(label);
@@ -66,6 +73,8 @@ public class ModSettings : Verse.ModSettings
         {
             HeaderOrientation = orientation;
         }
+        
+        TooltipHandler.TipRegion(radioButtonRect, tips);
 
         // Texture
         var textureRow = new Rect(column) { y = row.yMax, height = texture.height + (GenUI.Gap * 2f) };
