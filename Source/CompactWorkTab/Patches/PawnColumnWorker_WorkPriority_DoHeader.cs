@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Reflection;
 using CompactWorkTab.Mods;
 using HarmonyLib;
 using RimWorld;
@@ -13,9 +14,16 @@ namespace CompactWorkTab.Patches;
 [HarmonyPatch(typeof(PawnColumnWorker_WorkPriority), nameof(PawnColumnWorker_WorkPriority.DoHeader))]
 public class PawnColumnWorker_WorkPriority_DoHeader
 {
+    private static readonly MethodInfo headerClickedMethodInfo =
+        AccessTools.Method(typeof(PawnColumnWorker_WorkPriority), "HeaderClicked");
+
+    private static readonly MethodInfo getHeaderTipMethodInfo =
+        AccessTools.Method(typeof(PawnColumnWorker_WorkPriority), "GetHeaderTip");
+
     private static bool Prefix(PawnColumnWorker_WorkPriority __instance, Rect rect, PawnTable table)
     {
-        if (table.def != PawnTableDefOf.Work)
+        var defValue = (PawnTableDef)CompactWorkTab.DefFieldInfo.GetValue(table);
+        if (defValue != PawnTableDefOf.Work)
         {
             return true;
         }
@@ -65,7 +73,7 @@ public class PawnColumnWorker_WorkPriority_DoHeader
                 var originalAnchor = Text.Anchor;
                 var originalFont = Text.Font;
                 var verticalLabel = label.Length > 4
-                    ? $"{string.Join("\n", label.Substring(0, Math.Min(4, label.Length)).ToCharArray())}."
+                    ? $"{string.Join("\n", label[..Math.Min(4, label.Length)].ToCharArray())}."
                     : string.Join("\n", label.ToCharArray());
 
                 Text.Font = GameFont.Small;
@@ -92,7 +100,7 @@ public class PawnColumnWorker_WorkPriority_DoHeader
 
         if (Widgets.ButtonInvisible(transformedRect))
         {
-            __instance.HeaderClicked(rect, table);
+            headerClickedMethodInfo.Invoke(__instance, [rect, table]);
         }
 
         if (mouseIsOver && ModSettings.HeaderOrientation == HeaderOrientation.Inclined)
@@ -115,7 +123,8 @@ public class PawnColumnWorker_WorkPriority_DoHeader
             return false;
         }
 
-        TooltipHandler.TipRegion(new Rect(0f, 0f, UI.screenWidth, UI.screenHeight), __instance.GetHeaderTip(table));
+        TooltipHandler.TipRegion(new Rect(0f, 0f, UI.screenWidth, UI.screenHeight),
+            (string)getHeaderTipMethodInfo.Invoke(__instance, [table]));
 
         return false;
     }

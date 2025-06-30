@@ -1,0 +1,6 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Release" />
+  </Configurations>
+  <Project Path="CompactWorkTab/CompactWorkTab.csproj" />
+</Solution>

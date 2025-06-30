@@ -11,20 +11,20 @@ internal static class PriorityMaster
     private const string GetDefPriorityMethodName = "GetDefPriority";
     private static readonly List<string> PackageIds = ["Lauriichen.PriorityMod", "Lauriichan.PriorityMaster"];
 
-    private static object _modSettings;
+    private static object modSettings;
 
     private static object PriorityMasterModSettings
     {
         get
         {
-            if (_modSettings != null || !PackageIds.Any(ModsConfig.IsActive))
+            if (modSettings != null || !PackageIds.Any(ModsConfig.IsActive))
             {
-                return _modSettings;
+                return modSettings;
             }
 
             var modType = GenTypes.GetTypeInAnyAssembly(ModTypeName);
-            _modSettings = modType?.GetField(SettingsFieldName).GetValue(LoadedModManager.GetMod(modType));
-            return _modSettings;
+            modSettings = modType?.GetField(SettingsFieldName).GetValue(LoadedModManager.GetMod(modType));
+            return modSettings;
         }
     }
 

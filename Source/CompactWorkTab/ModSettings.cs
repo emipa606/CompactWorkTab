@@ -16,7 +16,7 @@ public class ModSettings : Verse.ModSettings
         base.ExposeData();
     }
 
-    public void DoSettingsWindowContents(Rect inRect)
+    public static void DoSettingsWindowContents(Rect inRect)
     {
         var fourth = inRect.width / 4f;
         var leftColumn = new Rect(inRect) { width = fourth };
@@ -28,10 +28,10 @@ public class ModSettings : Verse.ModSettings
         Widgets.CheckboxLabeled(firstRow, "CWT.useScrollWheel".Translate(), ref UseScrollWheel);
 
         var secondRow = new Rect(inRect) { y = firstRow.yMax, height = GenUI.ListSpacing };
-        if (CompactWorkTab.currentVersion != null)
+        if (CompactWorkTab.CurrentVersion != null)
         {
             GUI.contentColor = Color.gray;
-            Widgets.Label(secondRow, "CWT.modVersion".Translate(CompactWorkTab.currentVersion));
+            Widgets.Label(secondRow, "CWT.modVersion".Translate(CompactWorkTab.CurrentVersion));
             GUI.contentColor = Color.white;
         }
 

@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using HarmonyLib;
 using Mlie;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -8,14 +9,16 @@ namespace CompactWorkTab;
 
 public class CompactWorkTab : Mod
 {
-    public static string currentVersion;
-    private readonly ModSettings _settings;
+    public static string CurrentVersion;
+
+    public static readonly FieldInfo DefFieldInfo = AccessTools.Field(typeof(PawnTable), "def");
+    private readonly ModSettings settings;
 
     public CompactWorkTab(ModContentPack content) : base(content)
     {
-        _settings = GetSettings<ModSettings>();
+        settings = GetSettings<ModSettings>();
 
-        currentVersion = VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
+        CurrentVersion = VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
 
         new Harmony(content.PackageId).PatchAll(Assembly.GetExecutingAssembly());
     }
@@ -27,7 +30,7 @@ public class CompactWorkTab : Mod
 
     public override void DoSettingsWindowContents(Rect inRect)
     {
-        _settings.DoSettingsWindowContents(inRect);
+        ModSettings.DoSettingsWindowContents(inRect);
         base.DoSettingsWindowContents(inRect);
     }
 }
