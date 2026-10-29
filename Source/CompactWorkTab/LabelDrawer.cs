@@ -23,13 +23,13 @@ public static class LabelDrawer
         var originalMatrix = GUI.matrix;
 
         // Retrieve the topmost clipping rectangle in local GUI coordinates.
-        var topRect = (Rect)getTopRectMethodInfo.Invoke(null, null);
+        var topRect = (Rect)(getTopRectMethodInfo.Invoke(null, null) ?? rect);
 
         // Reset the GUI matrix to the identity matrix.
         GUI.matrix = Matrix4x4.identity;
 
         // Calculate the unclipped position of the current UI element in screen-space coordinates.
-        var unclippedPosition = (Vector2)unclipMethodInfo.Invoke(null, [Vector2.zero]);
+        var unclippedPosition = (Vector2)(unclipMethodInfo.Invoke(null, [Vector2.zero]) ?? rect.center);
 
         // Restore the original matrix for subsequent operations.
         var transformationMatrix = originalMatrix;
@@ -128,7 +128,7 @@ public static class LabelDrawer
         GUI.matrix = Matrix4x4.identity;
 
         // Set the pivot point for rotation to the center of the rotated rectangle
-        var pivotPoint = (Vector2)unclipMethodInfo.Invoke(null, [rotatedRect.center]);
+        var pivotPoint = (Vector2)(unclipMethodInfo.Invoke(null, [rotatedRect.center]) ?? rotatedRect.center);
 
         // Restore the original matrix for subsequent operations
         var transformationMatrix = originalMatrix;

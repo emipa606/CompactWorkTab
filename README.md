@@ -1,15 +1,15 @@
 # [Compact Work Tab (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=3250322299)
 
-![Image](https://i.imgur.com/buuPQel.png)
+![Image](https://img.litet.net/logos/Info.png)
 
 Update of CaptainArbitrarys mod https://steamcommunity.com/sharedfiles/filedetails/?id=3027381000
 
 - Added translation-support
 - By request there is now another vertical option that keeps the letters horizontal. This option is mainly for fixed width characters, like chinese. Idea by 摄魂狼
 
-![Image](https://i.imgur.com/pufA0kM.png)
+![Image](https://img.litet.net/logos/Notice.png)
 	
-![Image](https://i.imgur.com/Z4GOv8H.png)
+![Image](https://img.litet.net/logos/OriginalDescription.png)
 
 If you have a smaller screen or mods that add a lot of work types (like my own [Many Jobs](https://steamcommunity.com/sharedfiles/filedetails/?id=3013527266) for instance) you may have encountered the heartbreak of the unreadable Work tab.
 
@@ -45,13 +45,13 @@ Thanks to [Fluffy](https://steamcommunity.com/id/FluffyMods/myworkshopfiles/?app
 
 Portions of the materials used to create this mod are trademarks and/or copyrighted works of Ludeon Studios Inc. All rights reserved by Ludeon. This content/mod is not official and is not endorsed by Ludeon.
 
-![Image](https://i.imgur.com/PwoNOj4.png)
+![Image](https://img.litet.net/logos/ReportingIssues.png)
 
 
 
 -  See if the the error persists if you just have this mod and its requirements active.
 -  If not, try adding your other mods until it happens again.
--  Post your error-log using [HugsLib](https://steamcommunity.com/workshop/filedetails/?id=818773962) or the standalone [Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404) and command Ctrl+F12
+-  Always post your log using the [Log Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404)
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.
@@ -59,4 +59,4 @@ Portions of the materials used to create this mod are trademarks and/or copyrigh
 
  
 
-[![Image](https://img.shields.io/github/v/release/emipa606/CompactWorkTab?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/3250322299) | tags:  work tab,  customization
+[![Image](https://img.shields.io/github/v/release/emipa606/CompactWorkTab?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/3250322299) | customization, work tab

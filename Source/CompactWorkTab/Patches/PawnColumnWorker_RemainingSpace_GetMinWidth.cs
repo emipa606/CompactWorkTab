@@ -5,9 +5,9 @@ using UnityEngine;
 namespace CompactWorkTab.Patches;
 
 [HarmonyPatch(typeof(PawnColumnWorker_RemainingSpace), nameof(PawnColumnWorker_RemainingSpace.GetMinWidth))]
-public class PawnColumnWorker_RemainingSpace_GetMinWidth
+public static class PawnColumnWorker_RemainingSpace_GetMinWidth
 {
-    private static bool Prefix(ref int __result)
+    public static bool Prefix(ref int __result)
     {
         if (ModSettings.HeaderOrientation != HeaderOrientation.Inclined)
         {

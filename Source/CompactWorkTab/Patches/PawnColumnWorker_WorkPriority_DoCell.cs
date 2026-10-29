@@ -7,7 +7,7 @@ using Verse.Sound;
 namespace CompactWorkTab.Patches;
 
 [HarmonyPatch(typeof(PawnColumnWorker_WorkPriority), nameof(PawnColumnWorker_WorkPriority.DoCell))]
-public class PawnColumnWorker_WorkPriority_DoCell
+public static class PawnColumnWorker_WorkPriority_DoCell
 {
     public static void Postfix(PawnColumnWorker_WorkPriority __instance, Rect rect, Pawn pawn)
     {

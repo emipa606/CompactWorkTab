@@ -12,7 +12,7 @@ namespace CompactWorkTab.Patches;
 
 [HotSwappable]
 [HarmonyPatch(typeof(PawnColumnWorker_WorkPriority), nameof(PawnColumnWorker_WorkPriority.DoHeader))]
-public class PawnColumnWorker_WorkPriority_DoHeader
+public static class PawnColumnWorker_WorkPriority_DoHeader
 {
     private static readonly MethodInfo headerClickedMethodInfo =
         AccessTools.Method(typeof(PawnColumnWorker_WorkPriority), "HeaderClicked");
@@ -20,7 +20,7 @@ public class PawnColumnWorker_WorkPriority_DoHeader
     private static readonly MethodInfo getHeaderTipMethodInfo =
         AccessTools.Method(typeof(PawnColumnWorker_WorkPriority), "GetHeaderTip");
 
-    private static bool Prefix(PawnColumnWorker_WorkPriority __instance, Rect rect, PawnTable table)
+    public static bool Prefix(PawnColumnWorker_WorkPriority __instance, Rect rect, PawnTable table)
     {
         var defValue = (PawnTableDef)CompactWorkTab.DefFieldInfo.GetValue(table);
         if (defValue != PawnTableDefOf.Work)

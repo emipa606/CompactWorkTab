@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationReplace" MayRequire="name.krypt.rimworld.pawntablegrouped">
+        <xpath>Defs/PawnTableGrouped.CompatibilityInfoDef[defName = "captainarbitrary_compactworktab"]/tables/li[name = "Work"]/config/allowHScroll</xpath>
+        <value>
+          <allowHScroll>true</allowHScroll>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

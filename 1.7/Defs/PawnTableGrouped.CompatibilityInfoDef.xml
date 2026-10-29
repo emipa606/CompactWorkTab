@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+  <PawnTableGrouped.CompatibilityInfoDef MayRequire="name.krypt.rimworld.pawntablegrouped">
+    <defName>captainarbitrary_compactworktab</defName>
+    <packageId>captainarbitrary.compactworktab</packageId>
+    <modName>Compact Work Tab</modName>
+    <tables>
+      <li>
+        <name>Work</name>
+        <compatibility>Supported</compatibility>
+        <config>
+          <allowHScroll>false</allowHScroll>
+        </config>
+      </li>
+    </tables>
+  </PawnTableGrouped.CompatibilityInfoDef>
+</Defs>
